@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>KCSIE Confirmation | Operam Education Group</title>
+<style>
+  :root {
+    --paper: #F6F4EF;
+    --ink: #2A2925;
+    --ink-soft: #5B5A54;
+    --line: #DEDACF;
+    --teal: #274C4B;
+    --teal-dark: #1B3736;
+    --amber: #B9812F;
+    --card: #FFFFFF;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.5;
+    padding: 32px 16px 64px;
+  }
+
+  .wrap {
+    max-width: 620px;
+    margin: 0 auto;
+  }
+
+  .masthead {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+    padding-bottom: 16px;
+    margin-bottom: 28px;
+  }
+
+  .masthead .org {
+    font-weight: 600;
+    letter-spacing: 0.01em;
+    color: var(--teal-dark);
+  }
+
+  .masthead .year {
+    color: var(--ink-soft);
+    font-size: 0.9rem;
+  }
+
+  h1 {
+    font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    font-size: 1.9rem;
+    line-height: 1.25;
+    margin: 0 0 8px;
+    color: var(--teal-dark);
+  }
+
+  .intro {
+    color: var(--ink-soft);
+    max-width: 52ch;
+    margin: 0 0 28px;
+  }
+
+  .intro strong {
+    color: var(--ink);
+  }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    padding: 24px 24px 8px;
+    margin-bottom: 20px;
+  }
+
+  .doc-link {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    padding: 14px 16px;
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 4px;
+    margin-bottom: 24px;
+  }
+
+  .doc-link a {
+    color: var(--teal-dark);
+    font-weight: 600;
+    text-decoration: none;
+    border-bottom: 1px solid var(--teal-dark);
+  }
+
+  .doc-link span {
+    color: var(--ink-soft);
+    font-size: 0.88rem;
+  }
+
+  fieldset {
+    border: none;
+    padding: 0 0 20px;
+    margin: 0 0 20px;
+    border-bottom: 1px solid var(--line);
+  }
+
+  fieldset:last-of-type {
+    border-bottom: none;
+  }
+
+  legend {
+    font-weight: 600;
+    padding: 0 0 10px;
+    font-size: 0.98rem;
+  }
+
+  .option {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 8px 0;
+    cursor: pointer;
+  }
+
+  .option input {
+    margin-top: 4px;
+    accent-color: var(--teal);
+  }
+
+  .confirm-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    padding: 20px;
+    background: #FBF8F0;
+    border: 1px solid #E9DFC6;
+    border-radius: 4px;
+    margin-bottom: 24px;
+  }
+
+  .confirm-row input {
+    margin-top: 4px;
+    width: 18px;
+    height: 18px;
+    accent-color: var(--amber);
+  }
+
+  .confirm-row label {
+    font-size: 0.95rem;
+  }
+
+  button {
+    width: 100%;
+    padding: 14px;
+    background: var(--teal-dark);
+    color: #F6F4EF;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  button:disabled {
+    background: #B7C4C3;
+    cursor: not-allowed;
+  }
+
+  .note {
+    color: var(--ink-soft);
+    font-size: 0.82rem;
+    margin-top: 14px;
+    text-align: center;
+  }
+
+  .state {
+    display: none;
+    text-align: center;
+    padding: 48px 20px;
+  }
+
+  .state.active {
+    display: block;
+  }
+
+  .state h2 {
+    font-family: Georgia, "Iowan Old Style", "Times New Roman", serif;
+    color: var(--teal-dark);
+    margin-bottom: 8px;
+  }
+
+  .error-text {
+    color: #A3402C;
+    font-size: 0.9rem;
+    margin-top: 12px;
+    text-align: center;
+    display: none;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="masthead">
+    <span class="org">Operam Education Group</span>
+    <span class="year" id="yearLabel">KCSIE Confirmation</span>
+  </div>
+
+  <div id="formState">
+    <h1 id="greeting">Confirm you've read the updated KCSIE guidance</h1>
+    <p class="intro">This takes under two minutes. We ask everyone who may work through OEG this year to actively confirm this each year, it's part of keeping every setting we work with safe.</p>
+
+    <div class="doc-link">
+      <div>
+        <div><a href="KCSIE_DOCUMENT_LINK_HERE" target="_blank" rel="noopener">Open the KCSIE 2026 document</a></div>
+        <span>Opens in a new tab, PDF</span>
+      </div>
+    </div>
+
+    <form id="kcsieForm">
+      <div class="card">
+        <fieldset>
+          <legend>1. Who does the guidance say is responsible for a child's safety and welfare in school?</legend>
+          <label class="option"><input type="radio" name="q1" value="a" required> Only the Designated Safeguarding Lead (DSL)</label>
+          <label class="option"><input type="radio" name="q1" value="b"> Every member of staff, including temporary and agency staff</label>
+          <label class="option"><input type="radio" name="q1" value="c"> Only permanent teaching staff</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>2. If you have a safeguarding concern about a child, what should you do first?</legend>
+          <label class="option"><input type="radio" name="q2" value="a" required> Wait until the end of the day and mention it informally</label>
+          <label class="option"><input type="radio" name="q2" value="b"> Investigate it yourself before raising it</label>
+          <label class="option"><input type="radio" name="q2" value="c"> Report it to the school's Designated Safeguarding Lead as soon as possible</label>
+        </fieldset>
+
+        <fieldset>
+          <legend>3. Where should you find the safeguarding arrangements for a specific school you're placed at?</legend>
+          <label class="option"><input type="radio" name="q3" value="a"> The school's own child protection policy and DSL contact, provided on arrival</label>
+          <label class="option"><input type="radio" name="q3" value="b"> There's no need, OEG's policy covers every school</label>
+          <label class="option"><input type="radio" name="q3" value="c"> You should assume it's the same as your last placement</label>
+        </fieldset>
+      </div>
+
+      <div class="confirm-row">
+        <input type="checkbox" id="ackBox" required>
+        <label for="ackBox">I confirm I have read and understood the updated Keeping Children Safe in Education (KCSIE) guidance shared with me.</label>
+      </div>
+
+      <button type="submit" id="submitBtn">Confirm</button>
+      <p class="error-text" id="errorText">Something went wrong sending your confirmation. Please try again, or contact your consultant if this keeps happening.</p>
+      <p class="note">Your confirmation is logged against your candidate record with a timestamp.</p>
+    </form>
+  </div>
+
+  <div class="state" id="successState">
+    <h2>Thanks, you're all set</h2>
+    <p class="intro" style="margin: 0 auto;">Your confirmation has been recorded. You can close this page.</p>
+  </div>
+
+  <div class="state" id="invalidState">
+    <h2>This link isn't valid</h2>
+    <p class="intro" style="margin: 0 auto;">Please use the link from the original email, or contact your consultant for a new one.</p>
+  </div>
+
+</div>
+
+<script>
+  // ---- CONFIGURE THESE TWO VALUES ----
+  const SUBMIT_ENDPOINT = "https://script.google.com/macros/s/AKfycbzfLF1frNFjn1y8vPZBnV2ONBjHxvB8QP9W68jB-TRzaQjO8S2y_JrD4r_eYXdn3chjUA/exec";
+  // -------------------------------------
+
+  const params = new URLSearchParams(window.location.search);
+  const candidateId = params.get("id");
+  const name = params.get("n");
+  const token = params.get("t");
+
+  const formState = document.getElementById("formState");
+  const invalidState = document.getElementById("invalidState");
+  const successState = document.getElementById("successState");
+  const greeting = document.getElementById("greeting");
+  const errorText = document.getElementById("errorText");
+
+  if (!candidateId || !name || !token) {
+    formState.style.display = "none";
+    invalidState.classList.add("active");
+  } else {
+    greeting.textContent = `Hi ${decodeURIComponent(name)}, please confirm you've read the updated KCSIE guidance`;
+  }
+
+  const form = document.getElementById("kcsieForm");
+  const submitBtn = document.getElementById("submitBtn");
+
+  form.addEventListener("submit", async function (e) {
+    e.preventDefault();
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending...";
+    errorText.style.display = "none";
+
+    const payload = {
+      candidateId: candidateId,
+      name: decodeURIComponent(name),
+      token: token,
+      q1: form.q1.value,
+      q2: form.q2.value,
+      q3: form.q3.value,
+      confirmedAt: new Date().toISOString(),
+      userAgent: navigator.userAgent
+    };
+
+    try {
+      const res = await fetch(SUBMIT_ENDPOINT, {
+        method: "POST",
+        headers: { "Content-Type": "text/plain;charset=utf-8" },
+        body: JSON.stringify(payload)
+      });
+      if (!res.ok) throw new Error("Bad response");
+      formState.style.display = "none";
+      successState.classList.add("active");
+    } catch (err) {
+      submitBtn.disabled = false;
+      submitBtn.textContent = "Confirm";
+      errorText.style.display = "block";
+    }
+  });
+</script>
+</body>
+</html>
