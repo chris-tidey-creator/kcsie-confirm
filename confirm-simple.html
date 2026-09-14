@@ -249,12 +249,17 @@
     };
 
     try {
-      const res = await fetch(SUBMIT_ENDPOINT, {
+      // mode: "no-cors" because Google's script service redirects on
+      // response, and browsers sometimes block reading that redirected
+      // response even though the write itself has already completed.
+      // We can't read a status back in this mode, so a request that
+      // doesn't throw is treated as success.
+      await fetch(SUBMIT_ENDPOINT, {
         method: "POST",
+        mode: "no-cors",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify(payload)
       });
-      if (!res.ok) throw new Error("Bad response");
       formState.style.display = "none";
       successState.classList.add("active");
     } catch (err) {
