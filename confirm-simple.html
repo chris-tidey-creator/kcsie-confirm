@@ -174,7 +174,7 @@
 
   <div id="formState">
     <h1 id="greeting">Confirm you've read the updated KCSIE guidance</h1>
-    <p class="intro">This takes under a minute, but it is an essential step: we ask everyone working with an OEG brand this year to actively confirm they have read the guidance, as this is vital for keeping every setting we partner with safe and compliant.</p>
+    <p class="intro">As part of our safeguarding requirements, you are required to confirm that you have read and understood the current Keeping Children Safe in Education (KCSIE) guidance. This is a legal safeguarding responsibility for anyone working in an education setting. Please read the document carefully and confirm your understanding using the button below. Thank you in advance. </p>
 
     <div class="doc-link">
       <div>
@@ -249,17 +249,12 @@
     };
 
     try {
-      // mode: "no-cors" because Google's script service redirects on
-      // response, and browsers sometimes block reading that redirected
-      // response even though the write itself has already completed.
-      // We can't read a status back in this mode, so a request that
-      // doesn't throw is treated as success.
-      await fetch(SUBMIT_ENDPOINT, {
+      const res = await fetch(SUBMIT_ENDPOINT, {
         method: "POST",
-        mode: "no-cors",
         headers: { "Content-Type": "text/plain;charset=utf-8" },
         body: JSON.stringify(payload)
       });
+      if (!res.ok) throw new Error("Bad response");
       formState.style.display = "none";
       successState.classList.add("active");
     } catch (err) {
